@@ -104,7 +104,7 @@ function HomePage() {
             <h5>PRESTO IS USED BY</h5>
             <div className="row client-list">
               <div className="col">
-                  <ClientListCol1 />
+                <ClientListCol1 />
               </div>
               <div className="col">
                 <ClientListCol2 />
