@@ -1,41 +1,292 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import SvgComponent from './SvgComponent';
+import { url } from '../GlobalUrl';
+import axios from 'axios';
+import { Button, Modal, ModalBody, ModalFooter } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
+  var navigate = useNavigate;
+  const [register, setRegister] = useState({
+    first_name: '',
+    email: '',
+    // organisation_name: "",
+    password: '',
+  });
+  const [error, setError] = useState({
+    first_nameError: '',
+    emailError: '',
+    // organisation_nameError: "",
+    passwordError: '',
+  });
+
   const [email, setEmail] = useState('');
   const [emailBlured, setEmailBlured] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordBlured, setPasswordBlured] = useState(false);
+  const [msg, setMsg] = useState('');
+  const [emailBorderColor, setEmailBorderColor] = useState('#f7f7fa');
+  const [first_nameBorderColor, setFirst_nameBorderColor] = useState('#f7f7fa');
+  const [passwordBorderColor, setPasswordBorderColor] = useState('#f7f7fa');
+  const [visible, setVisible] = useState(false);
+  const [modal, setModal] = useState(false);
 
-  const validEmail = (email) => {
-    // implement email validation logic
-  };
+  
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handleEmailBlur = () => {
-    setEmailBlured(true);
-  };
-
-  function handlePasswordChange(event) {
-    setPassword(event.target.value);
+  async function callApi() {
+    // console.log("REG",register);
+    if (register.first_name === '') {
+      setMsg('Enter first name');
+      setModal(true);
+    } else if (register.last_name === '') {
+      setMsg('Enter last name');
+      setModal(true);
+    } else if (register.email === '') {
+      setMsg('Enter email');
+      setModal(true);
+    } else if (register.password === '') {
+      setMsg('Enter password');
+      setModal(true);
+    } else {
+      if (
+        error.first_nameError === '' &&
+        error.emailError === '' &&
+        error.passwordError === ''
+      ) {
+        axios.defaults.headers.common['Authorization'] = ``;
+        await axios
+          .post(url + '/api/user/', register)
+          .then((res) => {
+            // console.log("res", res);
+            // console.log("res.data",res.data);
+            console.log('yuyytttttxttztztztzztzt', res);
+            if (res.data.message) {
+              // return <Redirect to="/login-form"/>
+              // console.log("res",res);
+              if (res.status === 200) {
+                // alert(res.data.message);
+                setMsg(res.data.message);
+                if (
+                  res.data.message === 'A user with the email already exist!'
+                ) {
+                  // setVerify(false)
+                  setModal(true);
+                  // console.log(res.data.message);
+                } else {
+                  // setVerify(true)
+                  setModal(true);
+                }
+              }
+            }
+            // console.log("Status", res.status);
+          })
+          .catch((error) => {
+            console.log('Registration-Error', error);
+          });
+      }
+    }
   }
 
-  function handlePasswordBlur() {
-    setPasswordBlured(true);
-  }
+  // async function verificationEmailApi(){
+  //   await axios.post(`${url}/api/email/verification/refresh/`,{"email":register.email})
+  //   .then(res=>{
+  //     //console.log(res);
+  //     setMsg(res.data.message);
+  //   })
+  //     .catch(error=>{
+  //     console.log(error);
+  //   })
 
-  function validPassword(password) {
-    // add password validation logic here
-    return true;
-  }
+  // }
+
+  const toggle = () => {
+    setModal(!modal);
+    // console.log(msg);
+    if (
+      msg ==
+      'chirag jain is successfully registered. Please verify your e-mail before logging in.'
+    ) {
+      navigate('/login');
+    } else {
+      // history.push("/login-form")
+    }
+  };
+
+  // const show_password = (e) => {
+  //   setVisible(!visible);
+  //   // if(e.target.checked){
+  //   //     setVisible(true);
+  //   // }
+  //   // else{
+  //   //   setVisible(false);
+
+  //   // }
+  // };
+
+  const first_name_Handler = (e) => {
+    setRegister((prev) => {
+      return { ...prev, first_name: e.target.value };
+    });
+
+    if (e.target.value.length === 0) {
+      setError((prev) => {
+        return { ...prev, first_nameError: '*Enter first name' };
+      });
+      setFirst_nameBorderColor('1px solid red');
+    } else if (!/^[a-zA-Z]+$/.test(e.target.value)) {
+      setError((prev) => {
+        return {
+          ...prev,
+          first_nameError: '*First name can only contain letters',
+        };
+      });
+      setFirst_nameBorderColor('1px solid red');
+    } else {
+      setError((prev) => {
+        return { ...prev, first_nameError: '' };
+      });
+      setFirst_nameBorderColor('#f7f7fa');
+    }
+  };
+
+  // const last_name_Handler = (e) => {
+  //   // console.log(e.target.value);
+  //   setRegister((prev) => {
+  //     return { ...prev, last_name: e.target.value };
+  //   });
+
+  //   if (e.target.value.length === 0) {
+  //     setError((prev) => {
+  //       return { ...prev, last_nameError: '*Enter last name' };
+  //     });
+  //     setLast_nameBorderColor('1px solid red');
+  //   } else if (!/^[a-zA-Z]+$/.test(e.target.value)) {
+  //     setError((prev) => {
+  //       return {
+  //         ...prev,
+  //         last_nameError: '*Last name can only contain letters',
+  //       };
+  //     });
+  //     setLast_nameBorderColor('1px solid red');
+  //   } else {
+  //     setError((prev) => {
+  //       return { ...prev, last_nameError: '' };
+  //     });
+  //     setLast_nameBorderColor('#f7f7fa');
+  //   }
+  // };
+  const email_Handler = (e) => {
+    // console.log(e.target.value);
+    setRegister((prev) => {
+      return { ...prev, email: e.target.value };
+    });
+
+    var emailRegex = '^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+[.]+[a-zA-Z]+$';
+
+    const check = (mailID) => {
+      if (mailID.match(emailRegex)) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+
+    if (e.target.value.length === 0) {
+      setError((prev) => {
+        return { ...prev, emailError: '*Enter email' };
+      });
+      setEmailBorderColor('1px solid red');
+    } else if (!check(e.target.value)) {
+      setError((prev) => {
+        return { ...prev, emailError: '*Not a valid email address' };
+      });
+      setEmailBorderColor('1px solid red');
+    } else {
+      setError((prev) => {
+        return { ...prev, emailError: '' };
+      });
+      setEmailBorderColor('#f7f7fa');
+    }
+  };
+  // const Organisation_Handler = (e) => {
+  //   console.log(e.target.value);
+  //   setRegister((prev) => {
+  //     return { ...prev, organisation_name: e.target.value };
+  //   });
+
+  //   if (e.target.value.length === 0) {
+  //     setError((prev) => {
+  //       return { ...prev, organisation_nameError: "*Enter organisation name" };
+  //     });
+  //     setOrganisation_nameBorderColor("1px solid red");
+  //   } else {
+  //     setError((prev) => {
+  //       return { ...prev, organisation_nameError: "" };
+  //     });
+  //     setOrganisation_nameBorderColor("#f7f7fa");
+  //   }
+  // };
+  const password_Handler = (e) => {
+    // console.log(e.target.value);
+    setRegister((prev) => {
+      return { ...prev, password: e.target.value };
+    });
+
+    var passwordRegex =
+      '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$';
+
+    const check = (password) => {
+      if (password.match(passwordRegex)) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+
+    if (e.target.value.length === 0) {
+      setError((prev) => {
+        return { ...prev, passwordError: '*Enter password' };
+      });
+      setPasswordBorderColor('1px solid red');
+    } else if (!check(e.target.value)) {
+      setError((prev) => {
+        return {
+          ...prev,
+          passwordError:
+            '*Password must contain minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character',
+        };
+      });
+      setPasswordBorderColor('1px solid red');
+    } else {
+      setError((prev) => {
+        return { ...prev, passwordError: '' };
+      });
+      setPasswordBorderColor('#f7f7fa');
+    }
+  };
+
+  // console.log("formdatails", register);
+
+  /*-------------------- BUTTON CLICKED --------------------*/
+
+  const handleSubmit = () => {
+    if (
+      register.first_name === '' ||
+      register.last_name === '' ||
+      register.email === '' ||
+      // register.organisation_name === "" ||
+      register.password === ''
+    ) {
+      setMsg('Please fill all details');
+    }
+    callApi();
+  };
+
   return (
     <div>
-      <div class="container">
-        <nav class="navbar navbar-expand-lg">
-          <a class="navbar-brand" href="#">
+      <div className="container">
+        <nav className="navbar navbar-expand-lg">
+          <a className="navbar-brand" href="#">
             <SvgComponent />
             {/* <svg
      xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +296,7 @@ const SignUp = () => {
     </svg> */}
           </a>
           <button
-            class="navbar-toggler"
+            className="navbar-toggler"
             type="button"
             data-toggle="collapse"
             data-target="#navbarNav"
@@ -53,97 +304,140 @@ const SignUp = () => {
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span class="navbar-toggler-icon"></span>
+            <span className="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-              <li class="nav-item nav-item2">
-                <a class="login" href="#">
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item nav-item2">
+                <a className="login" href="/login">
                   Login
                 </a>
               </li>
             </ul>
           </div>
-          <span class="navbar-text">
-            <a class="login" href="#">
+          <span className="navbar-text">
+            <a className="login" href="/login">
               Login
             </a>
           </span>
         </nav>
       </div>
-      <div class="login">
+      <div className="login">
         {' '}
         <h3>Signup</h3>{' '}
-        <div class="container mt-5">
-          <div class="row d-flex justify-content-center">
-            <div class="col-md-6">
-              <div class="card px-5 py-5" id="form1">
-                <div class="form-data" v-if="!submitted">
-                  <div class="forms-inputs mb-4">
+        <div className="container mt-5">
+          <div className="row d-flex justify-content-center">
+            <div className="col-md-6">
+              <div className="card px-5 py-5" id="form1">
+                <div className="form-data" v-if="!submitted">
+                  {/* <div className="forms-inputs mb-4">
                     {' '}
-                    <span>Email or username</span>
+                    <span>Username</span>
+                    <input
+                      type="text"
+                      className="form-control"
+                      value={register.first_name}
+                      name="first_name"
+                      placeholder="First Name"
+                      onChange={first_name_Handler}
+                      style={{ border: first_nameBorderColor }}
+                    />
+                  </div> */}
+                  {/* <div className="forms-inputs mb-4">
+                    {' '}
+                    <span>Last Name</span>
+                    <input
+                      type="text"
+                      className="lastNameInput"
+                      value={register.last_name}
+                      name="last_name"
+                      placeholder="Last Name"
+                      onChange={last_name_Handler}
+                      style={{ border: last_nameBorderColor }}
+                    />
+                  </div> */}
+                  <div className="forms-inputs mb-4">
+                    {' '}
+                    <span>Email</span>
                     {/* <input
                       autocomplete="off"
                       type="text"
                       v-model="email"
-                      v-bind:class="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}"
+                      v-bind:className="{'form-control':true, 'is-invalid' : !validEmail(email) && emailBlured}"
                       v-on:blur="emailBlured = true"
                     /> */}
                     <input
-                      autoComplete="off"
-                      type="text"
-                      value={email}
-                      className={`form-control ${
-                        !validEmail(email) && emailBlured ? 'is-invalid' : ''
-                      }`}
-                      onChange={handleEmailChange}
-                      onBlur={handleEmailBlur}
+                      // autoComplete="off"
+                      type="email"
+                      value={register.email}
+                      // className={`form-control ${
+                      //   !validEmail(email) && emailBlured ? 'is-invalid' : ''
+                      // }`}
+                      className="form-control"
+                      onChange={email_Handler}
                     />
-                    <div class="invalid-feedback">
+                    <div className="invalid-feedback">
                       A valid email is required!
                     </div>
                   </div>
-                  <div class="forms-inputs mb-4">
+                  <div className="forms-inputs mb-4">
                     {' '}
                     <span>Password</span>
                     {/* <input
                       autocomplete="off"
                       type="password"
                       v-model="password"
-                      v-bind:class="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}"
+                      v-bind:className="{'form-control':true, 'is-invalid' : !validPassword(password) && passwordBlured}"
                       v-on:blur="passwordBlured = true"
                     /> */}
                     <input
-                      autoComplete="off"
-                      type="password"
-                      value={password}
-                      className={`form-control ${
-                        passwordBlured && !validPassword(password)
-                          ? 'is-invalid'
-                          : ''
-                      }`}
-                      onChange={handlePasswordChange}
-                      onBlur={handlePasswordBlur}
+                      // autoComplete="off"
+                      type={visible ? 'text' : 'password'}
+                      value={register.password}
+                      // className={`form-control ${
+                      //   passwordBlured && !validPassword(password)
+                      //     ? 'is-invalid'
+                      //     : ''
+                      // }`}
+                      className="form-control"
+                      placeholder="Password"
+                      onChange={password_Handler}
                     />
-                    <div class="invalid-feedback">
+                    <div className="invalid-feedback">
                       Password must be 8 character!
                     </div>
                   </div>
-                  <div class="mb-3">
-                    <button class="btn btn-dark w-100">Login</button>{' '}
+                  <div className="mb-3">
+                    <button
+                      className="btn btn-dark w-100"
+                      onClick={() => handleSubmit()}
+                    >
+                      SignUp
+                    </button>{' '}
                   </div>
                 </div>
-                <div class="success-data" v-else></div>
+                <div className="success-data" v-else></div>
               </div>
             </div>
           </div>
         </div>{' '}
       </div>
+      <Modal isOpen={modal} toggle={toggle}>
+        <ModalBody>{msg}</ModalBody>
+        <ModalFooter>
+          <Button color="primary" onClick={toggle} style={{ fontSize: '12px' }}>
+            Okay
+          </Button>
+          {/* {verify && <Button color="primary" onClick={()=>{toggle();verificationEmailApi();}} style={{fontSize:"12px"}}>
+                Resend Verification email
+              </Button>} */}
+        </ModalFooter>
+      </Modal>
       <footer>
-        <div class="container">
-          <div class="row">
-            <div class="col">
+        <div className="container">
+          <div className="row">
+            <div className="col">
               <SvgComponent />
               {/* 
     <svg
@@ -153,7 +447,7 @@ const SignUp = () => {
     <image  x="0px" y="0px" width="292px" height="98px"  xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAASQAAABiCAMAAADOUV4bAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAYFBMVEX///8AAABRrukTU9E2cOF+pfJ4wfEumd4Lgc7///////////////////////////////////////////////////////////9Rrumq2fh4wfE2cOETU9Eumd5+pfILgc441EcAAAAAF3RSTlMAAAAAAAAAAAARRCJmd1Uzmcy77t2Iql2mveUAAAABYktHRACIBR1IAAAAB3RJTUUH5wMFASkswLeSRwAABIFJREFUeNrt2m1jmyAQB/C4dmtB8QGjbusevv+3XExy3IEcoU3b0PX+7xLU6E9AwOx2sSzXZfcpIkiCJEiCVFIESZAESZBKiiAJkiAJUkkRJEESJEEqKYIkSIIkSCVFkMpGql41Smv13H20rsmngpAaQ0MvzC9pO3o5ftl5X1fa9sPpdKypua39PVQDu4zWdMUh2eAI+wnuZlgy9nhRNvLbBgD39Fur41vTPep+9L4fmsKRDpkUB2HVRSRlt4e7gGS2JUNXOtIyKA5i7C4gqWFbMCeRYnsc0pSOtFgOYtmrNFIfI08hdSNTOJWOtGgO6dxEOKQaNS30xHWqT2Lq0ZqmOCR7fNy4M54R4lQyww0fKdJgSdbedoL96+Mja39qoNN5Czg82WPGc5+N1s1Eev2uNCRzGie5yo8Q597V3XJNkPBx53foAzzZ+5GOHDQePPjmzHp8OLr2ZwtFqlq4iyFSpUbymUNa/H0O6lUSyTXEBr/DFqgLRYLL1Bsk7/MFpKmKZoPUwXkbuhncjmX+P5HOPYrXyBJIMEKy8e24y7k1EjS3etvckI9Hcv3wVOcg2SV+HOi9mfZ2Y6QOqkLFdtx0oNnTmdix18VTGUx9EWnBX/MCNczsvsRyJVLskFlIvT6kcUPBnkCsJe00kpL4OMmrAyenJo0Eo6o5RIK+qt99f6dkIQVhB5NjnUYKBtCjSSHBZxMiQRWzJSNNHAQ8qlmkSgfTDKuuQoo2tx+Yny7Ra39y+YW5e2lz88I2qRF6WB6pqoPp26CuQYrmWqSXdtyRJrIp2Rt3vQmkA9Pk9Uz9xT6pD42wTyoTaTDsmhG54dzTzXFMpNXVHBJUmH2IBA9JUxbSaRrb0gELDgFseLXsOImktRvcDdKwOfApMNxqy0Iy2xcBiAS134ZlKSRcW3JP+A0SLBoE7c0tuKgPhOQut30WEgyanC0/d/MPBBWMm7uViQS3dgz6qxiS3hyBR3JjT2+y5x6P3LJbmUhunjD5ZRGknqx67C/1STiNGV0lVW7+t+fOuVAkt3rhvwgwmqY+1wJYPwPZhkeqcPXWNutu9LHILSddi3T/RkjhokZ0NG5cS1lXYg1s49poDIl9D8AOkg7BS3+KefzGxIqf3gzJ9R4mhdTHv04g0XUDP4Niz7lYJLiYUfFIOn6xSSROKWFULpJz6RM1SW8bD31uRZHcGpaXKfUGt1wkV000j1SpsMHRRQAGqVJTeKRh/Y2PiOTmCmv74ZAOQypDKsbsjxEYpGCnZT4NBwpCwlSvlboxs7W9aZ/zB6WuMev7ygn//VMk0seJIAlSEUhfb33+7x2cbOAE5ZsrvcPiPxhBEiRBEiRBEqSyI0iCJEg3RXrACNIanHfgH0PItOTh1udXRAQpI4KUEUHKiCBlRJAyIkgZEaSMCFJG8E/Gf10eyZAbtrv/dC8CYnkkSJFiQVojSBkRpIwIUkYEKSOClBFByoggZSSKdIcRpBWJBJHIP9zvMbc+17JCkW59LsVGkDIiSBkRpIwIUkYEKSOClBFBysjnQPoHsnbSJWBBfwoAAAAASUVORK5CYII=" />
     </svg> */}
             </div>
-            <div class="col">
+            <div className="col">
               <ul>
                 <li>
                   <a href="#">Features</a>
@@ -169,7 +463,7 @@ const SignUp = () => {
                 </li>
               </ul>
             </div>
-            <div class="col">
+            <div className="col">
               <ul>
                 <li>
                   <a href="#">Terms of use</a>
@@ -180,7 +474,7 @@ const SignUp = () => {
               </ul>
             </div>
 
-            <div class="col">
+            <div className="col">
               <ul>
                 <li>
                   <a href="#">Signup</a>
@@ -190,8 +484,8 @@ const SignUp = () => {
                 </li>
               </ul>
             </div>
-            <div class="col">
-              <ul class="social">
+            <div className="col">
+              <ul className="social">
                 <li>
                   <a href="#">
                     {/* <svg
@@ -240,7 +534,7 @@ const SignUp = () => {
             </div>
           </div>
         </div>
-        <p class="copy">© 2023 Presto. All rights reserved.</p>
+        <p className="copy">© 2023 Presto. All rights reserved.</p>
       </footer>
     </div>
   );

@@ -146,7 +146,6 @@ p {
   border-radius: 100%;
   display: inline-block;
 }
-
 .btn {
   font-family: var(--primary-font);
   font-style: normal;
@@ -186,7 +185,6 @@ p {
   font-size: 12px;
   background: linear-gradient(180deg, #0affc4 -4.69%, #19a299 100%);
 }
-
 .btn-bordered {
   border: 1px solid #c7d0de;
   border-radius: 5px;
@@ -217,7 +215,6 @@ body {
   color: var(--main-text);
   font-family: var(--primary-font);
 }
-
 header {
   background: linear-gradient(269.55deg, #f6f7fb 18.79%, #eaeef5 71.64%);
   box-shadow: 6px 1px 11px rgba(0, 0, 0, 0.05);
@@ -234,7 +231,6 @@ header .dropdown .dropdown-menu {
   border-radius: 0;
   box-shadow: 9px 12px 20px rgba(0, 0, 0, 0.25);
 }
-
 header .dropdown .dropdown-link {
   color: #6b7a99;
   font-family: var(--secondary-font);
@@ -255,7 +251,6 @@ header .notification-bell {
   border-radius: 100px;
   position: relative;
 }
-
 header .notification-bell::after {
   content: '';
   position: absolute;
@@ -267,7 +262,6 @@ header .notification-bell::after {
   box-shadow: 0px 2px 10px rgba(38, 51, 77, 0.03);
   border-radius: 100px;
 }
-
 header .dropdown .dropdown-item {
   font-family: var(--primary-font);
   font-size: 13px;
@@ -299,21 +293,18 @@ header .input-search {
   background-color: #f5f7fb;
   border-right: 1px solid #bfcbdd;
 }
-
 .sidebar .sidebar-menu {
   width: 100px;
   height: 100px;
   border-bottom: 1px solid #bfcbdd;
   position: relative;
 }
-
 .sidebar .sidebar-menu .nav-link {
   color: var(--main-text);
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
 }
-
 .addmail {
   margin: 20px 0;
   border: 1px dotted #c7d0de;
@@ -321,7 +312,6 @@ header .input-search {
   padding: 14px 10px;
   background: #eef1f8;
 }
-
 .form-control:focus {
   color: #212529;
   background-color: #fff;
@@ -329,7 +319,6 @@ header .input-search {
   outline: 0;
   box-shadow: 0 0 0 0rem #1353d1;
 }
-
 .sidebar .sidebar-menu.active::after {
   content: '';
   position: absolute;
@@ -343,7 +332,6 @@ header .input-search {
   right: 0;
   top: 0;
 }
-
 .dropdown-item {
   color: #6b7a99;
   font-weight: 500;
@@ -939,13 +927,11 @@ a.login:hover {
   border: 1px solid #c7d0de;
   border-radius: 10px 10px 0px 0px;
 }
-
 .customer-filter .dropdown .dropdown-item {
   color: #6b7a99;
   font-weight: 500;
   font-size: 12px;
 }
-
 .doc-box {
   width: 169px;
   background: #fff;
@@ -954,7 +940,6 @@ a.login:hover {
   float: left;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
 }
-
 .customer-docs .doc-box {
   width: 169px;
   background: #fff;
@@ -962,7 +947,6 @@ a.login:hover {
   border-radius: 8px 10px 8px 8px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
 }
-
 .doc-title {
   color: #fff;
   font-weight: 700;
@@ -971,14 +955,12 @@ a.login:hover {
   border-bottom: 1px solid #c7d0de;
   border-radius: 7px 9px 0px 0px;
 }
-
 .doc-shared span {
   line-height: 0px;
   height: 40px;
   color: #000;
   text-align: left;
 }
-
 .doc-box .img-fluid {
   margin-top: 10px;
 }
@@ -1008,7 +990,6 @@ a.login:hover {
   flex: 1;
   text-align: center;
 }
-
 .customer-docs .doc-action-link:not(:last-child) {
   border-right: 1px solid #c7d0de;
 }
@@ -1026,7 +1007,6 @@ a.login:hover {
 .presto-modal .modal-content {
   background-color: #fafcff;
 }
-
 .presto-modal .modal-title {
   color: var(--main-text);
   font-size: 16px;
@@ -1069,7 +1049,6 @@ a.login:hover {
   right: 20px;
   opacity: 1;
 }
-
 #newCustomer .modal-body .hiddenInput {
   width: 0.1px;
   height: 0.1px;
@@ -1103,12 +1082,10 @@ a.login:hover {
   border-radius: 100%;
   cursor: pointer;
 }
-
 .modal-body .form-label {
   color: #323b4a;
   font-size: 14px;
 }
-
 .modal-body input.form-control {
   background: #ffffff;
   height: 56px;
@@ -1129,7 +1106,6 @@ a.login:hover {
   font-size: 15px;
   height: 56px;
 }
-
 .modal-body .bootstrap-select.customer-select {
   width: 100% !important;
   background: linear-gradient(180deg, #e7edf5 0%, #f1f2f4 100%);
@@ -1153,12 +1129,10 @@ a.login:hover {
   font-weight: 600;
   padding: 5px 16px;
 }
-
 .modal-body .bootstrap-select.customer-select button.dropdown-toggle {
   background-color: #fff;
   height: 53px;
 }
-
 .modal-body .bootstrap-select.customer-select button.dropdown-toggle::after {
   border-top: 0.8em solid #6b7a99;
   border-right: 0.5em solid transparent;
@@ -1176,7 +1150,6 @@ a.login:hover {
   align-items: center;
   padding: 0 20px;
 }
-
 .modal-body .bootstrap-select.customer-select .filter-option-inner-inner {
   font-size: 14px;
   color: #9ba9b9;
@@ -1186,12 +1159,10 @@ a.login:hover {
 .right-sidebar .panel {
   border-bottom: 1px solid #c7d0de;
 }
-
 .right-sidebar .panel .panel-header {
   background-color: #eef1f8;
   border-bottom: 1px solid #c7d0de;
 }
-
 .right-sidebar .panel .panel-title {
   color: #6b7a99;
   font-style: normal;
@@ -1199,7 +1170,6 @@ a.login:hover {
   font-size: 16px;
   text-transform: uppercase;
 }
-
 .right-sidebar .panel-content .panel-doc-preview {
   width: 147px;
   background: #fff;
@@ -1213,20 +1183,17 @@ a.login:hover {
   border: 0.5px solid #c7d0de;
   cursor: pointer;
 }
-
 .filor {
   background-color: #fff;
   height: 0px;
   width: 100%;
   margin-top: 40px;
 }
-
 .files a {
   display: block;
   width: 22px;
   float: left;
 }
-
 .files p {
   font-size: 12px;
   text-align: left;
@@ -1266,22 +1233,18 @@ a.login:hover {
   border: 1px solid #c7d0de;
   border-radius: 0px 1px 8px 8px;
 }
-
 .order-box .order-title {
   font-weight: 700;
   font-size: 18px;
 }
-
 .order-box .order-status {
   font-weight: 400;
   font-size: 13px;
 }
-
 .order-box .order-action {
   font-weight: 400;
   font-size: 12px;
 }
-
 .order-box .order-action .order-type {
   font-size: 13px;
   font-weight: 500;
@@ -1313,7 +1276,6 @@ a.login:hover {
   background-color: #eef1f8;
   cursor: pointer;
 }
-
 .batch-wrapper .batch-item {
   background: #fff;
   width: 193px;
@@ -1322,18 +1284,15 @@ a.login:hover {
   box-shadow: inset -1px -5px 13px rgba(0, 0, 0, 0.04);
   border-radius: 10px;
 }
-
 .batch-wrapper .batch-item .batch-title {
   color: #323b4a;
   font-size: 16px;
   font-weight: 700;
 }
-
 .batch-wrapper .batch-item .batch-subtitle {
   color: #6b7a99;
   font-size: 12px;
 }
-
 .batch-wrapper .batch-item .batch-footer span {
   color: #323b4a;
   font-size: 12px;
@@ -1346,12 +1305,10 @@ a.login:hover {
   border: 1px solid #c7d0de;
   box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.03);
 }
-
 .catalogue-wrapper .catalogue-item .catalog-item-preview {
   flex: 2;
   border-right: 1px solid #c7d0de;
 }
-
 .catalogue-wrapper .catalogue-pricing {
   flex: 3;
   max-height: 180px;
@@ -1362,13 +1319,11 @@ a.login:hover {
 .catalogue-wrapper .catalog-image {
   position: relative;
 }
-
 .catalogue-wrapper .catalog-image a {
   position: absolute;
   right: 7px;
   bottom: 2px;
 }
-
 .catalogue-wrapper .catalogue-title {
   color: var(--dark);
   font-size: 16px;
@@ -1387,13 +1342,11 @@ a.login:hover {
   color: #c3cad9;
   font-size: 12px;
 }
-
 .catalogue-wrapper .catalogue-pricing .price-name {
   color: #6b7a99;
   font-size: 14px;
   padding: 6px;
 }
-
 .catalogue-wrapper .catalogue-pricing .price {
   color: var(--dark);
   font-size: 14px;
@@ -1407,7 +1360,6 @@ a.login:hover {
   color: #6b7a99;
   font-size: 14px;
 }
-
 .catalogue-wrapper .catalogue-info p span {
   color: var(--dark);
   font-weight: 600;
@@ -1450,7 +1402,6 @@ a.login:hover {
   right: 10px;
   bottom: 12px;
 }
-
 .catalogue-single .order-table {
   box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.03);
 }
@@ -1463,7 +1414,6 @@ a.login:hover {
   border: 1px solid #c7d0de;
   text-decoration: none;
 }
-
 .settings-wrapper .settings-item h5 {
   color: #323b4a;
   font-size: 16px;
@@ -1475,7 +1425,6 @@ a.login:hover {
 .process-wrapper table {
   border: 1px solid #c2cad8;
 }
-
 .process-wrapper table th,
 .process-wrapper table td {
   font-weight: 700;
@@ -1483,22 +1432,18 @@ a.login:hover {
   padding-top: 15px;
   padding-bottom: 15px;
 }
-
 .process-wrapper table a {
   color: #6394ee;
   text-decoration: none;
 }
-
 /*=========== EDIT PROCESS PAGE =============*/
 .edit-process-wrapper h2 {
   color: #323b4a;
 }
-
 .edit-process-wrapper table {
   font-size: 14px;
   border-color: #bfcbdd;
 }
-
 .edit-process-wrapper table .edit-link {
   color: #6394ee;
   text-decoration: none;
@@ -1550,7 +1495,6 @@ a.login:hover {
   box-shadow: 6px 1px 11px rgba(0, 0, 0, 0.05);
   border-bottom: 1px solid #c7d0de;
 }
-
 .customer-filter .dropdown button.btn-dropdown {
   color: #fff;
   background: linear-gradient(180deg, #c5cbd8 -4.69%, #636d86 83.1%);
@@ -1571,29 +1515,24 @@ a.login:hover {
   border-bottom: 0;
   border-left: 0.3em solid transparent;
 }
-
 .action-buttons-list .action-button a {
   width: 80px;
   line-height: 70px;
   text-align: center;
   display: inline-block;
 }
-
 .action-buttons-list .action-button:first-child a,
 .editor-action-buttons-list .action-button:first-child a {
   border-left: 1px solid #c7d0de;
 }
-
 .action-buttons-list .action-button a,
 .editor-action-buttons-list .action-button a {
   border-right: 1px solid #c7d0de;
 }
-
 .action-buttons-list .action-button a:hover,
 .editor-action-buttons-list .action-button a:hover {
   background-color: #fff;
 }
-
 .action-buttons-list .action-button a:hover svg path,
 .editor-action-buttons-list .action-button a:hover svg path {
   fill: #6b7a99;
@@ -1654,7 +1593,6 @@ a.login:hover {
   height: 70vh;
   position: relative;
 }
-
 .upload-zone-text {
   font-style: normal;
   font-weight: 600;
@@ -1675,12 +1613,10 @@ a.login:hover {
   top: 0px;
   opacity: 0;
 }
-
 #drop-zone.mouse-over {
   border: 3px dashed rgba(0, 0, 0, 0.3);
   color: #7e7e7e;
 }
-
 .uploadedFiles {
   padding: 0;
   display: none;
@@ -1688,7 +1624,6 @@ a.login:hover {
   left: 30px;
   bottom: 30px;
 }
-
 #filename {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -1699,26 +1634,22 @@ a.login:hover {
   overflow-y: scroll;
   color: #240aff;
 }
-
 #filename span {
   font-size: 1.5rem;
   line-height: 1.2rem;
   height: 1.5rem;
   width: 1.5rem;
 }
-
 .closeBtn {
   color: black;
   display: inline-block;
   vertical-align: -20% !important;
 }
-
 .closeBtn:hover {
   color: red;
   display: inline-block;
   cursor: pointer;
 }
-
 .uploadedFiles .file {
   min-width: 20%;
   background-color: #fff;
@@ -1732,7 +1663,6 @@ a.login:hover {
 .theone {
   box-shadow: inset 0 0 0 2px #156ff8;
 }
-
 .excel-table td:hover {
   background: #b8ebc0 !important;
   box-shadow: inset 0 0 0 2px #4dbf5f;
@@ -1755,7 +1685,6 @@ a.login:hover {
   border-radius: 5px;
   opacity: 1 !important;
 }
-
 .tooltip.bs-tooltip-top .tooltip-arrow::before {
   display: none !important;
   background-color: #fff !important;
@@ -1772,12 +1701,10 @@ a.login:hover {
   color: #b9c0d1;
   margin-right: 1rem !important;
 }
-
 .editor .editor-header-dropdown-btn {
   color: #6b7a99;
   border: 1px solid #c3cad9;
 }
-
 .editor .editor-header-order-btn {
   color: #9ca5ba;
   background: linear-gradient(180deg, #ebf2fc 0%, #dee1e7 100%);
@@ -1785,7 +1712,6 @@ a.login:hover {
   border: 1px solid #c7d0de;
   border-radius: 5px;
 }
-
 .editor-action-buttons-list .action-button a {
   width: 52px;
   line-height: 52px;
@@ -1797,7 +1723,6 @@ a.login:hover {
   background: #fff;
   height: 53px;
 }
-
 .editor .bootstrap-select .dropdown-menu {
   padding: 0;
   border-radius: 0;
@@ -1823,7 +1748,6 @@ a.login:hover {
   height: 53px;
   outline: 0 !important;
 }
-
 .editor .bootstrap-select button.dropdown-toggle::after {
   border-top: 0.4em solid;
   border-right: 0.4em solid transparent;
@@ -1838,7 +1762,6 @@ a.login:hover {
   align-items: center;
   padding: 0 20px;
 }
-
 .editor .bootstrap-select .filter-option-inner-inner {
   font-weight: 700;
   font-size: 14px;
@@ -1870,7 +1793,6 @@ a.login:hover {
   border-bottom: 1px solid #c7d0de;
   width: 100%;
 }
-
 .shower {
   float: left;
   display: block;
@@ -1880,7 +1802,6 @@ a.login:hover {
   padding-left: 20px;
   border-right: 1px solid #c3cad9;
 }
-
 .shower2 {
   float: left;
   display: block;
@@ -1890,7 +1811,6 @@ a.login:hover {
   line-height: 50px;
   padding-left: 20px;
 }
-
 .xls-function {
   border: 0px;
   height: 100%;
@@ -1926,7 +1846,6 @@ a.login:hover {
 .editor .excel-table tbody tr:hover td {
   background-color: #e6ffea;
 }
-
 .editor .excel-table thead th {
   font-weight: 500;
   font-size: 14px;
@@ -1934,12 +1853,10 @@ a.login:hover {
   height: 55px;
   vertical-align: middle;
 }
-
 .editor .excel-table thead th:first-child {
   width: 10px;
   line-height: 40px;
 }
-
 .editor .excel-table tbody td {
   background-color: #fff;
   padding: 0 !important;

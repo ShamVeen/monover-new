@@ -1,8 +1,11 @@
 import React from 'react';
 import Batch from './Components/Batch';
+// import * as bootstrap from 'bootstrap';
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Customer from './Components/Customer';
 import './style.css';
+// import './App.css';
 import LeftSidebar from './Components/LeftSidebar';
 import Catalogue from './Components/Catalogue';
 import Navbar from './Components/Navbar';
@@ -26,6 +29,7 @@ function App() {
   return (
     <div className="App">
       {/* <Navbar/> */}
+      {/* <HomePage/> */}
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import ModalforAddBatch from './Modals/ModalforAddBatch';
 import Navbar from './Navbar';
 
 function Catalogue() {
@@ -119,7 +120,8 @@ function Catalogue() {
                   <p className="main-content-header">Catalogue</p>
                 </div>
                 <div className="content-header-action">
-                  <a
+                <ModalforAddBatch size="lg"/>
+                  {/* <a
                     href=""
                     className="btn btn-primary me-2"
                     data-bs-toggle="modal"
@@ -141,7 +143,7 @@ function Catalogue() {
                       />
                     </svg>
                     Add Batch
-                  </a>
+                  </a> */}
                 </div>
               </div>
 
