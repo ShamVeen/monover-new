@@ -356,7 +356,7 @@ function HomePage() {
               <div className="col">
                 <ul>
                   <li>
-                    <a href="#">Signup</a>
+                    <a href="/signup">Signup</a>
                   </li>
                   <li>
                     <a href="/login">Login</a>

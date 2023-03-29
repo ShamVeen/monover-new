@@ -3,7 +3,7 @@ import SvgComponent from './SvgComponent';
 import { url } from '../GlobalUrl';
 import axios from 'axios';
 import { Button, Modal, ModalBody, ModalFooter } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   var navigate = useNavigate;
@@ -30,8 +30,6 @@ const SignUp = () => {
   const [passwordBorderColor, setPasswordBorderColor] = useState('#f7f7fa');
   const [visible, setVisible] = useState(false);
   const [modal, setModal] = useState(false);
-
-  
 
   async function callApi() {
     // console.log("REG",register);
@@ -408,13 +406,16 @@ const SignUp = () => {
                       Password must be 8 character!
                     </div>
                   </div>
+                  
                   <div className="mb-3">
-                    <button
-                      className="btn btn-dark w-100"
-                      onClick={() => handleSubmit()}
-                    >
-                      SignUp
-                    </button>{' '}
+                    <Link to="/customer">
+                      <button
+                        className="btn btn-dark w-100"
+                        // onClick={() => handleSubmit()}
+                      >
+                        SignUp
+                      </button>{' '}
+                    </Link>
                   </div>
                 </div>
                 <div className="success-data" v-else></div>
