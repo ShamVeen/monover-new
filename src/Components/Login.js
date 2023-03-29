@@ -218,6 +218,7 @@ const Login = () => {
             <span className="navbar-text-home">
               <a className="login" href="/signup">
                 Signup
+              
               </a>
             </span>
           </nav>

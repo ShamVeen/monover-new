@@ -48,6 +48,7 @@ const ModalforNewCustomer = ({ name }) => {
                 <form action="" className="w-100">
                   <div className="d-flex align-items-center flex-column">
                     <p className="modal-body-form-text">
+                    
                       Add profile picture <span>(optional)</span>
                     </p>
                     <label

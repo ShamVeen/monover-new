@@ -406,6 +406,7 @@ const SignUp = () => {
                       Password must be 8 character!
                     </div>
                   </div>
+                  
                   <div className="mb-3">
                     <Link to="/customer">
                       <button
