@@ -3,7 +3,7 @@ import SvgComponent from './SvgComponent';
 import { url } from '../GlobalUrl';
 import axios from 'axios';
 import { Button, Modal, ModalBody, ModalFooter } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   var navigate = useNavigate;
@@ -409,12 +409,13 @@ const SignUp = () => {
                     </div>
                   </div>
                   <div className="mb-3">
-                    <button
+                  <Link to="/customer"><button
                       className="btn btn-dark w-100"
-                      onClick={() => handleSubmit()}
+                      // onClick={() => handleSubmit()}
                     >
                       SignUp
-                    </button>{' '}
+                    </button>{' '}</Link>
+                    
                   </div>
                 </div>
                 <div className="success-data" v-else></div>

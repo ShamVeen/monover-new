@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import SvgFooterLinkedIn from './HomePageSvg/SvgFooterLinkedIn';
 import SvgFooterInsta from './HomePageSvg/SvgFooterInsta';
 import FooterPrestoLogo from './HomePageSvg/FooterPrestoLogo';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -215,7 +216,7 @@ const Login = () => {
               </ul>
             </div>
             <span className="navbar-text-home">
-              <a className="login" href="#">
+              <a className="login" href="/signup">
                 Signup
               </a>
             </span>
@@ -267,12 +268,13 @@ const Login = () => {
                     </div>
                     <div className="mb-3">
                       {' '}
-                      <button
-                        onClick={handleSubmit}
+                      <Link to="/customer"> <button
+                        // onClick={handleSubmit}
                         className="btn btn-dark w-100"
                       >
                         Login
-                      </button>{' '}
+                      </button></Link>
+                     {' '}
                     </div>
                   </div>
                   <div className="success-data" v-else></div>
