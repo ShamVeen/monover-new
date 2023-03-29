@@ -1,6 +1,6 @@
 import React from 'react';
 import SvgComponent from '../SvgComponent';
-import './HomePage.css';
+// import './HomePage.css';
 import SvgHomePageOne from '../HomePageSvg/SvgHomePageOne';
 import SvgHomePageTwo from '../HomePageSvg/SvgHomePageTwo';
 import SvgHomePageThree from '../HomePageSvg/SvgHomePageThree';
@@ -30,7 +30,7 @@ function HomePage() {
       <div className="home-page">
         <div className="container">
           <nav className="navbar navbar-expand-lg">
-            <a className="navbar-brand" href="#">
+            <a className="navbar-brand-home" href="#">
               <SvgComponent />
             </a>
             <button
@@ -46,35 +46,35 @@ function HomePage() {
             </button>
 
             <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav">
-                <li className="nav-item active">
-                  <a className="nav-link" href="#">
+              <ul className="navbar-nav-home">
+                <li className="nav-item-home active">
+                  <a className="nav-link-home" href="#">
                     Features
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
+                <li className="nav-item-home">
+                  <a className="nav-link-home" href="#">
                     How it work
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
+                <li className="nav-item-home">
+                  <a className="nav-link-home" href="#">
                     Pricing
                   </a>
                 </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
+                <li className="nav-item-home">
+                  <a className="nav-link-home" href="#">
                     Blog <span className="sr-only">SOON</span>
                   </a>
                 </li>
-                <li className="nav-item nav-item2">
+                <li className="nav-item-home nav-item2">
                   <a className="login" href="/login">
                     Login
                   </a>
                 </li>
               </ul>
             </div>
-            <span className="navbar-text">
+            <span className="navbar-text-home">
               <a className="login" href="/login">
                 Login
               </a>
@@ -359,7 +359,7 @@ function HomePage() {
                     <a href="#">Signup</a>
                   </li>
                   <li>
-                    <a href="#">Login</a>
+                    <a href="/login">Login</a>
                   </li>
                 </ul>
               </div>
