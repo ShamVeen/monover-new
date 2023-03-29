@@ -12,7 +12,7 @@ const ModalforCustomerAddOrder = ({ name }) => {
 
   return (
     <Fragment>
-      <Button className="text-capitalize" onClick={() => setShow(true)} style={{height: '40px'}}>
+      <Button className="text-capitalize" onClick={() => setShow(true)} style={{height: '35px'}}>
         <PlusSvg /> {name || 'Add Order'}
       </Button>
       <Modal show={show} onHide={handleClose}>
