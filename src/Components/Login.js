@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import './Login.css';
 import SvgComponent from './SvgComponent';
 import axios from 'axios';
-import { url } from '../GlobalUrl'
+import { url } from '../GlobalUrl';
 import { useNavigate } from 'react-router-dom';
 import SvgFooterLinkedIn from './HomePageSvg/SvgFooterLinkedIn';
 import SvgFooterInsta from './HomePageSvg/SvgFooterInsta';
@@ -16,15 +16,15 @@ const Login = () => {
   const [emailBlured, setEmailBlured] = useState(false);
   const [password, setPassword] = useState('');
   const [passwordBlured, setPasswordBlured] = useState(false);
-  const [emailError, setEmailError] = useState("")
-  const [passwordError, setPasswordError] = useState("")
-  const [passBorderColor, setPassBorderColor] = useState("#f7f7fa")
-  const [emailBorderColor, setEmailBorderColor] = useState("#f7f7fa")
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [passBorderColor, setPassBorderColor] = useState('#f7f7fa');
+  const [emailBorderColor, setEmailBorderColor] = useState('#f7f7fa');
   const [visible, setVisible] = useState(false);
-  const [msg, setMsg] = useState("")
-  const [verify, setVerify] = useState(false)
+  const [msg, setMsg] = useState('');
+  const [verify, setVerify] = useState(false);
 
-  const [modal, setModal] = useState(false)
+  const [modal, setModal] = useState(false);
 
   const validEmail = (email) => {
     // implement email validation logic
@@ -182,7 +182,7 @@ const Login = () => {
 
   return (
     <div>
-      <div className='home-page'>
+      <div className="home-page">
         <div className="container">
           <nav className="navbar navbar-expand-lg">
             <a className="navbar-brand-home" href="/">
@@ -224,7 +224,7 @@ const Login = () => {
         </div>
         <div className="login">
           {' '}
-          <h3 >Login</h3>{' '}
+          <h3>Login</h3>{' '}
           <div className="container mt-5">
             <div className="row d-flex justify-content-center">
               <div className="col-md-6">
@@ -238,8 +238,9 @@ const Login = () => {
                         autoComplete="off"
                         type="text"
                         value={email}
-                        className={`form-control ${!validEmail(email) && emailBlured ? 'is-invalid' : ''
-                          }`}
+                        className={`form-control ${
+                          !validEmail(email) && emailBlured ? 'is-invalid' : ''
+                        }`}
                         onChange={handleEmailChange}
                         onBlur={handleEmailBlur}
                       />
@@ -255,10 +256,11 @@ const Login = () => {
                         autoComplete="off"
                         type="password"
                         value={password}
-                        className={`form-control ${passwordBlured && !validPassword(password)
-                          ? 'is-invalid'
-                          : ''
-                          }`}
+                        className={`form-control ${
+                          passwordBlured && !validPassword(password)
+                            ? 'is-invalid'
+                            : ''
+                        }`}
                         onChange={handlePasswordChange}
                         onBlur={handlePasswordBlur}
                       />
@@ -268,13 +270,15 @@ const Login = () => {
                     </div>
                     <div className="mb-3">
                       {' '}
-                      <Link to="/customer"> <button
-                        // onClick={handleSubmit}
-                        className="btn btn-dark w-100"
-                      >
-                        Login
-                      </button></Link>
-                     {' '}
+                      <Link to="/customer">
+                        {' '}
+                        <button
+                          // onClick={handleSubmit}
+                          className="btn btn-dark w-100"
+                        >
+                          Login
+                        </button>
+                      </Link>{' '}
                     </div>
                   </div>
                   <div className="success-data" v-else></div>
@@ -286,7 +290,7 @@ const Login = () => {
         <footer>
           <div className="container">
             <div className="row">
-              <a className="col" href='/' >
+              <a className="col" href="/">
                 <FooterPrestoLogo />
               </a>
               <div className="col">

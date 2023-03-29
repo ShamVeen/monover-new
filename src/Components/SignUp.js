@@ -31,8 +31,6 @@ const SignUp = () => {
   const [visible, setVisible] = useState(false);
   const [modal, setModal] = useState(false);
 
-  
-
   async function callApi() {
     // console.log("REG",register);
     if (register.first_name === '') {
@@ -409,13 +407,14 @@ const SignUp = () => {
                     </div>
                   </div>
                   <div className="mb-3">
-                  <Link to="/customer"><button
-                      className="btn btn-dark w-100"
-                      // onClick={() => handleSubmit()}
-                    >
-                      SignUp
-                    </button>{' '}</Link>
-                    
+                    <Link to="/customer">
+                      <button
+                        className="btn btn-dark w-100"
+                        // onClick={() => handleSubmit()}
+                      >
+                        SignUp
+                      </button>{' '}
+                    </Link>
                   </div>
                 </div>
                 <div className="success-data" v-else></div>
