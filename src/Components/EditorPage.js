@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import * as bootstrap from 'bootstrap';
+import Navbar from './Navbar';
 
 function EditorPage() {
   useEffect(() => {
@@ -42,6 +43,7 @@ function EditorPage() {
   return (
     <div>
       <div className="container-fluid">
+      <Navbar/>
         <div className="row">
           <div className="sidebar col-sm-auto sticky-top px-0 d-none">
             <div className="d-flex flex-sm-column flex-row flex-nowrap align-items-center sticky-top">

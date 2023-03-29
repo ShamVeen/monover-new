@@ -16,6 +16,7 @@ import folderFilled from '../images/icons/folder-filled.svg';
 import { Link } from 'react-router-dom';
 import RightSidebar from './RightSidebar';
 import Navbar from './Navbar';
+import ModalforAddBatch from './Modals/ModalforAddBatch';
 
 function Batch() {
   return (
@@ -141,7 +142,8 @@ function Batch() {
                   <p className="main-content-header">Batch</p>
                 </div>
                 <div className="content-header-action">
-                  <a href="" className="btn btn-primary me-2">
+                <ModalforAddBatch size="xl"/>
+                  {/* <a href="" className="btn btn-primary me-2">
                     <svg
                       className="me-3"
                       width="13"
@@ -158,7 +160,7 @@ function Batch() {
                       />
                     </svg>
                     Add Batch
-                  </a>
+                  </a> */}
                 </div>
               </div>
 

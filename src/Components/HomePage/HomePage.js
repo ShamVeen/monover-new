@@ -1,6 +1,6 @@
 import React from 'react';
 import SvgComponent from '../SvgComponent';
-import './HomePage.css';
+// import './HomePage.css';
 import SvgHomePageOne from '../HomePageSvg/SvgHomePageOne';
 import SvgHomePageTwo from '../HomePageSvg/SvgHomePageTwo';
 import SvgHomePageThree from '../HomePageSvg/SvgHomePageThree';

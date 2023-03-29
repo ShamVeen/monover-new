@@ -7,6 +7,9 @@ import settings from '../images/icons/settings.svg';
 import logouticon from '../images/icons/logout.svg';
 import bell from '../images/icons/bell.svg';
 import process from '../images/icons/process.svg';
+import SvgComponent from './SvgComponent';
+import PrestoLogo from './HomePageSvg/PrestoLogo';
+import logopresto from '../images/LogoPresto.svg';
 
 function Navbar() {
   return (
@@ -16,14 +19,33 @@ function Navbar() {
           <div className="d-flex ali-items-center">
             <div className="logo-container md-5">
               <a href="#">
-                {/* <svg width="53" height="55" viewBox="0 0 53 55" fill="none" href="http://www.w3.org/2000/svg">
-                      <rect y="0.0535889" width="53" height="54.6672" fill="url(#pattern0)"/>
-                      <defs>
-                      <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
-                      <use href="#image0_69_981" transform="matrix(0.00216693 0 0 0.00210084 -0.0482326 0)"/>
-                      </pattern>
-                      </defs>
-                      </svg> */}
+                <svg
+                  width="53"
+                  height="55"
+                  viewBox="0 0 53 55"
+                  fill="none"
+                  href="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    y="0.0535889"
+                    width="53"
+                    height="54.6672"
+                    fill="url(#pattern0)"
+                  />
+                  <defs>
+                    <pattern
+                      id="pattern0"
+                      patternContentUnits="objectBoundingBox"
+                      width="1"
+                      height="1"
+                    >
+                      <use
+                        href="#image0_69_981"
+                        transform="matrix(0.00216693 0 0 0.00210084 -0.0482326 0)"
+                      />
+                    </pattern>
+                  </defs>
+                </svg>
                 <svg width="53" height="55" viewBox="0 0 53 55" fill="none">
                   <rect
                     y="0.0535889"

@@ -201,14 +201,14 @@ const Login = () => {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item nav-item2">
-                <a className="login" href="#">
+                <a className="login" href="/signup">
                   Signup
                 </a>
               </li>
             </ul>
           </div>
           <span className="navbar-text">
-            <a className="login" href="#">
+            <a className="login" href="/signup">
               Signup
             </a>
           </span>

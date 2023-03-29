@@ -455,11 +455,11 @@ header .input-search {
 #newCustomer .modal-body .hiddenInput + #newCustomer .modal-body label {
   cursor: pointer; /* "hand" cursor */
 }
-#newCustomer .modal-body .form-text {
+.modal-body-form-text {
   font-size: 14px;
   color: #323b4a;
 }
-#newCustomer .modal-body .form-text span {
+.modal-body-form-text span {
   color: #bfcbdd;
 }
 #newCustomer .modal-body .profile-pic-label {

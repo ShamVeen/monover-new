@@ -1,5 +1,4 @@
 import React from 'react';
-import '../HomePage/HomePage.css';
 
 
 function ClientListCol2() {
