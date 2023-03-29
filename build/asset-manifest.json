@@ -1,0 +1,35 @@
+{
+  "files": {
+    "main.css": "/static/css/main.af37d46c.css",
+    "main.js": "/static/js/main.d70abd6c.js",
+    "static/media/client-logo.svg": "/static/media/client-logo.59557e5ad581e4f19edefa2c50d50ddd.svg",
+    "static/media/customer-logo.svg": "/static/media/customer-logo.9e6015559c6ebccb4dc6a7ee976d0cef.svg",
+    "static/media/artnode.svg": "/static/media/artnode.70c8be413917a7de84036bc3dda5ae8f.svg",
+    "index.html": "/index.html",
+    "static/media/process.svg": "/static/media/process.29801e2704104d309ea0773bf960fdf3.svg",
+    "static/media/settings.svg": "/static/media/settings.e0f9bffc7993996f8d8dfa8f7cb66073.svg",
+    "static/media/logout.svg": "/static/media/logout.055aaf3d7e90a971a78b3abee9ecbbeb.svg",
+    "static/media/share.svg": "/static/media/share.7282a21787e71c0a291b6613bf08ca71.svg",
+    "static/media/doc.svg": "/static/media/doc.f532a16c11708623f928e18afa5e75a3.svg",
+    "static/media/png.svg": "/static/media/png.c12c38a92282a71bdc3ff9a6ec757b3d.svg",
+    "static/media/search.svg": "/static/media/search.0300c78c5030a86e92ce.svg",
+    "static/media/organization.svg": "/static/media/organization.80faf3e27d107c630a8ee4e2515c1ff0.svg",
+    "static/media/close.svg": "/static/media/close.7264eb215aea33fd034d.svg",
+    "static/media/eye.svg": "/static/media/eye.50e71ee803d52d4e859d01b635fdaad2.svg",
+    "static/media/bell.svg": "/static/media/bell.c66ee665ccf098465418b70b3a4ba796.svg",
+    "static/media/upload-icon.svg": "/static/media/upload-icon.b206f6c370583fa6eded20764b8cf74b.svg",
+    "static/media/profile.svg": "/static/media/profile.555b284a1a8085e7212ef8f1a60bd6e0.svg",
+    "static/media/edit.svg": "/static/media/edit.15cdb1888551d473b1c5d9c2fe1e4d9e.svg",
+    "static/media/edit-profile.svg": "/static/media/edit-profile.4879d7e2b7e7a7ea48d86dba56eed00b.svg",
+    "static/media/right-arrow.svg": "/static/media/right-arrow.1a65e118c618895203611fe452db493c.svg",
+    "static/media/folder.svg": "/static/media/folder.520d80671e8fa9c229d11ee165d604d8.svg",
+    "static/media/folder-filled.svg": "/static/media/folder-filled.32e40f55268ed487b6838bdf9feafc06.svg",
+    "static/media/upload.svg": "/static/media/upload.249be8f00fbe254a628cddae457bbe7d.svg",
+    "main.af37d46c.css.map": "/static/css/main.af37d46c.css.map",
+    "main.d70abd6c.js.map": "/static/js/main.d70abd6c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.af37d46c.css",
+    "static/js/main.d70abd6c.js"
+  ]
+}
