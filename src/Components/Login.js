@@ -109,7 +109,10 @@ const Login = () => {
           axios.defaults.headers.common['Authorization'] = ``;
           setModal(true);
         }
+        console.log("error file", error.response.status);
+
       });
+
   }
 
   const show_password = () => {
@@ -271,15 +274,15 @@ const Login = () => {
                     </div>
                     <div className="mb-3">
                       {' '}
-                      <Link to="/customer">
+                      {/* <Link to="/customer"> */}
                         {' '}
                         <button
-                          // onClick={handleSubmit}
+                          onClick={handleSubmit}
                           className="btn btn-dark w-100"
                         >
                           Login
                         </button>
-                      </Link>{' '}
+                      {/* </Link> */}
                     </div>
                   </div>
                   <div className="success-data" v-else></div>
