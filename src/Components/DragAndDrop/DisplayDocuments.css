@@ -1,0 +1,41 @@
+.section-draggable {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  margin: 0.5rem;
+  background-color: whitesmoke;
+  border-radius: 8px;
+}
+
+.section-sidebar--header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-sidebar--header div label {
+  background-color: rgba(216, 235, 236, 0.932);
+  color: #000;
+  padding: 0.5rem;
+  font-size: 15px;
+  font-family: sans-serif;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.section-sidebar--filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.section-sidebar--filter div {
+  border-radius: 8px;
+  padding: 0.8rem 0.5rem;
+  background-color: rgba(216, 235, 236, 0.932);
+}
