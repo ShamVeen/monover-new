@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import organization from '../images/icons/organization.svg';
 import artnode from '../images/icons/artnode.svg';
 import profile from '../images/icons/profile.svg';
@@ -17,8 +17,72 @@ import { Link } from 'react-router-dom';
 import RightSidebar from './RightSidebar';
 import Navbar from './Navbar';
 import ModalforAddBatch from './Modals/ModalforAddBatch';
+import axios from 'axios';
+import { Col, Container ,Row} from 'react-bootstrap';
+import {url } from "../GlobalUrl";
+import FilePreview from "./DragAndDrop/FilePreviewBatch";
+
+const customData = [
+  {id:1, batch_name:'btach_1',document:[
+      {id: 2, document_name: 'form1.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/form1_sMWnX2g.png'},
+      {id: 24, document_name: 'form7.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/form7.png'},
+      {id: 75, document_name: 'forms-multiple-1.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/forms-multiple-1_ZxbRkoU.png'},
+      {id: 12, document_name: 'form1.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/form1_sMWnX2g.png'},
+      {id: 21, document_name: 'form7.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/form7.png'},
+      {id: 15, document_name: 'forms-multiple-1.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/forms-multiple-1_ZxbRkoU.png'},
+      {id: 23, document_name: 'form1.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/form1_sMWnX2g.png'},
+      {id: 20, document_name: 'form7.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/form7.png'},
+      {id: 5, document_name: 'forms-multiple-1.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/forms-multiple-1_ZxbRkoU.png'},
+  ]
+  },
+  {id:2, batch_name:'btach_2',document:[
+      {id: 12, document_name: 'form1.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/form1_sMWnX2g.png'},
+      {id: 21, document_name: 'form7.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/form7.png'},
+      {id: 15, document_name: 'forms-multiple-1.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/forms-multiple-1_ZxbRkoU.png'},
+      {id: 23, document_name: 'form1.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/form1_sMWnX2g.png'},
+      {id: 20, document_name: 'form7.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/form7.png'},
+      {id: 5, document_name: 'forms-multiple-1.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/forms-multiple-1_ZxbRkoU.png'}
+  ]
+  },
+  {id:3, batch_name:'btach_3',document:[
+      {id: 23, document_name: 'form1.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/form1_sMWnX2g.png'},
+      {id: 20, document_name: 'form7.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/form7.png'},
+      {id: 5, document_name: 'forms-multiple-1.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/forms-multiple-1_ZxbRkoU.png'}]
+  },
+  {id:4, batch_name:'btach_4',document:[
+      {id: 23, document_name: 'form1.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/form1_sMWnX2g.png'},
+      {id: 20, document_name: 'form7.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/form7.png'},
+      {id: 5, document_name: 'forms-multiple-1.png', file: 'https://django-monover-textract.s3.amazonaws.com/files/forms-multiple-1_ZxbRkoU.png'}]
+  },
+]
 
 function Batch() {
+
+    const [batchData,setbatchData] = useState([])
+    const [loading,setloading] = useState(false)
+    // 
+    // 
+const getBatchDocument = async() =>{
+    setloading(true)
+    try{
+            await axios.get(url + `/api/batch/`)
+            .then((res)=>{
+                console.log(res.data)
+                setloading(false)
+                setbatchData(res.data)
+                
+            })
+    }
+    catch(err){
+        console.log(err)
+    }
+    setloading(false)
+}
+// 
+useEffect(()=>{
+    getBatchDocument()
+},[])
+
   return (
     <div>
       {/* <LeftSidebar/> */}
@@ -218,8 +282,52 @@ function Batch() {
                     </div>
                   </div>
                 </div>
+
               </div>
             </div>
+
+
+            {/* <Container style={{ maxWidth: "98.4%" }}>
+            <Row>
+                {
+                    batchData.map((item,index)=>{
+                        return(
+                            <Col key={index} lg={12} md={12}>
+                                <div className="bz-card"
+                                    style={{
+                                    minHeight: "3rem",
+                                    height: "auto",
+                                    marginBottom: "30px",
+                                    marginTop: "23px",
+                                    width: "100%",
+                                    borderRadius:'12px',
+                                    padding:'20px'
+                                    }}>
+                                    <div className='ml-1 mb-2'><h6>{item.batch_name}</h6></div>
+                                    <Row>
+                                        {
+                                            item.documents.length >0 && 
+                                            item.documents.map((items,ind)=>{
+                                                
+                                                return(
+                                                    <Col md={4} lg={4} key={ind} className='mb-2'>
+                                                       <FilePreview 
+                                                             file = {items}
+                                                             keys={index}
+                                                       /> 
+                                                    </Col>
+                                                )
+                                            })
+                                        }
+                                    </Row>
+                                </div>
+                            </Col>
+                        )
+                    })
+                }
+            </Row>
+        </Container>
+         */}
 
             <div className="right-sidebar">
               <div className="panel">

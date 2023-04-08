@@ -1,0 +1,10 @@
+.iframe-loading {
+    background: url("https://icon-library.com/images/loading-icon-animated-gif/loading-icon-animated-gif-19.jpg")
+      50% center no-repeat;
+   
+    height: 100vh;
+  }
+  .zoom{
+    display: none;
+  }
+  
