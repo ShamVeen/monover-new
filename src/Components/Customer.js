@@ -11,6 +11,9 @@ import {
   Tooltip,
   OverlayTrigger,
 } from 'react-bootstrap';
+import logo from '../images/landing/icon.svg';
+import Share from './Share';
+import moment from 'moment';
 import organization from '../images/icons/organization.svg';
 import artnode from '../images/icons/artnode.svg';
 import profile from '../images/icons/profile.svg';
@@ -18,7 +21,12 @@ import editprofile from '../images/icons/edit-profile.svg';
 import settings from '../images/icons/settings.svg';
 import logouticon from '../images/icons/logout.svg';
 import bell from '../images/icons/bell.svg';
+import FilePreview from './DragAndDrop/FilePreview2';
+
 import Navbar from './Navbar';
+import { BsFillGrid3X3GapFill, BsUpload } from 'react-icons/bs';
+import { AiOutlineEdit, AiOutlineFolderAdd } from 'react-icons/ai';
+import { SiMicrosoftexcel } from 'react-icons/si';
 import process from '../images/icons/process.svg';
 import upload from '../images/icons/upload.svg';
 import edit from '../images/icons//edit.svg';
@@ -50,6 +58,13 @@ import {
   getPreviousDocuments,
 } from '../api/review';
 import ReviewDisplay from './DragAndDrop/ReviewDisplay';
+import ClientModal from './comps/ClientModal';
+import ClientEditModel from './comps/ClientEditModal';
+import SubprojectModal from './DragAndDrop/subprojectModal';
+import ClientDropModal from './DragAndDrop/ClientDropModal';
+import ClientDropModal1 from './DragAndDrop/ClientDropModal2';
+import ClientDropModal2 from './DragAndDrop/ClientDropModal2';
+
 function Customer() {
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
@@ -202,7 +217,7 @@ function Customer() {
       });
     //  }
   }
-  console.log("subproject", subProjectListApi)
+  console.log('subproject', subProjectListApi);
 
   const subProjectToggle = (clientName, clientId) => {
     seteditClientId(clientId);
@@ -821,6 +836,691 @@ function Customer() {
                       </div>
                     </div>
 
+                    <div className="row">
+                      <div className="col-lg-8">
+                        {clients.length === 0 && documents.length === 0 && (
+                          <h3 className="m-5 text-center">No Documents</h3>
+                        )}
+
+                        {clients.map((client, i) => (
+                          <React.Fragment key={i}>
+                            {client.sub_project.length === 0 ? (
+                              <Droppable
+                                key={client.id}
+                                types={['file']}
+                                onDrop={(file) => onDrop(file, client)}
+                              >
+                                <div
+                                  key={client.id}
+                                  className="bz-card"
+                                  style={{
+                                    minHeight: '1rem',
+                                    height: '250px',
+                                    marginBottom: '30px',
+                                    marginTop: '23px',
+                                    width: '100%',
+                                    borderRadius: '12px',
+                                  }}
+                                >
+                                  <div className="d-flex flex-row justify-content-between flex-row">
+                                    <div className="d-flex align-items-center">
+                                      <h4
+                                        style={{
+                                          fontWeight: 'bold',
+                                          margin: '10px',
+                                          fontSize: 23,
+                                          cursor: 'pointer',
+                                          textTransform: 'capitalize',
+                                        }}
+                                        onClick={() =>
+                                          navigate.push(
+                                            `/alldeals/${client.id}`
+                                          )
+                                        }
+                                      >
+                                        {documentByDate === 'document-date'
+                                          ? moment(client.date_created).format(
+                                              'DD/MM/YYYY'
+                                            )
+                                          : client.project_name &&
+                                            documentByDate === 'document-type'
+                                          ? client.doc_type
+                                          : client.project_name}
+
+                                        {client['document_length'] ? (
+                                          <span className="ml-1">
+                                            {client.document_length == 0
+                                              ? `(File :${client.document_length})`
+                                              : `(File: ${client.document_length})`}
+                                          </span>
+                                        ) : (
+                                          ''
+                                        )}
+                                        {/* {client.project_name} */}
+                                      </h4>
+                                      {documentByDate === 'document-date' ? (
+                                        ''
+                                      ) : (
+                                          <AiOutlineEdit
+                                            className="ml-2 cursor-pointer"
+                                            size={'25px'}
+                                            role="button"
+                                            onClick={(e) =>
+                                              editClientName(
+                                                client.id,
+                                                client.project_name
+                                              )
+                                            }
+                                          />
+                                        ) &&
+                                        documentByDate === 'document-type' ? (
+                                        ''
+                                      ) : (
+                                        <AiOutlineEdit
+                                          className="ml-2 cursor-pointer"
+                                          size={'25px'}
+                                          role="button"
+                                          onClick={(e) =>
+                                            editClientName(
+                                              client.id,
+                                              client.project_name
+                                            )
+                                          }
+                                        />
+                                      )}
+                                      {/* <AiOutlineEdit
+                    className="ml-2 cursor-pointer"
+                    size={'25px'}
+                    role='button'
+                    onClick={e=>editClientName(client.id,client.project_name)}
+                   /> */}
+                                    </div>
+                                    <div
+                                      className="align-items-center"
+                                      style={{
+                                        display: 'flex',
+                                        flexDirection: 'row',
+                                      }}
+                                    >
+                                      {/* <div className="mr-2"> Select file</div> */}
+                                      {/*  */}
+
+                                      {/*  */}
+                                      {/* <div
+                                        onClick={() => {
+                                          subProjectToggle(
+                                            client.project_name,
+                                            client.id
+                                          );
+                                        }}
+                                        className="uploadButton"
+                                      >
+                                        <OverlayTrigger
+                                          placement="top"
+                                          overlay={
+                                            <Tooltip>Add Orders</Tooltip>
+                                          }
+                                        >
+                                          <AiOutlineFolderAdd className="fs30" />
+                                        </OverlayTrigger>
+                                      </div> */}
+                                      {/*  */}
+                                      {/* <Link to="DragAndDrop"> */}
+                                      {/* <div className="uploadButton">
+                                        <OverlayTrigger
+                                          placement={'top'}
+                                          overlay={<Tooltip>Upload</Tooltip>}
+                                        >
+                                          <BsUpload />
+                                        </OverlayTrigger>
+                                      </div> */}
+                                      {/* </Link> */}
+                                      {/*  */}
+                                      {/* <OverlayTrigger
+                                        placement={'top'}
+                                        overlay={<Tooltip>Catalog</Tooltip>}
+                                      >
+                                        <img
+                                          src={logo}
+                                          style={{ cursor: 'pointer' }}
+                                          onClick={() =>
+                                            navigate.push(
+                                              `/productlist/${client.id}`,
+                                              {
+                                                client,
+                                              }
+                                            )
+                                          }
+                                          item="folder"
+                                          id={client.id}
+                                          width="21px"
+                                        ></img>
+                                      </OverlayTrigger> */}
+                                      {/* <GrHost size={23} onClick={()=>handlepush()} item='folder' id={client.id} /> */}
+{/* 
+                                      <Share
+                                        size={23}
+                                        item="folder"
+                                        id={client.id}
+                                      /> */}
+                                    </div>
+                                  </div>
+                                  <BsFillGrid3X3GapFill container>
+                                    <BsFillGrid3X3GapFill item xs={12}>
+                                      <div className="d-flex justify-content-between">
+                                        {client.sub_project.length === 0 && (
+                                          <div>
+                                            {/*  */}
+                                            {/* <Link to="DragAndDrop"> */}
+                                            <div className="uploadButton">
+                                              <OverlayTrigger
+                                                placement={'top'}
+                                                overlay={
+                                                  <Tooltip>Upload</Tooltip>
+                                                }
+                                              >
+                                                <BsUpload
+                                                  type="file"
+                                                  onChange={handleOnFileUpload}
+                                                />
+                                              </OverlayTrigger>
+                                            </div>
+                                            {/* </Link> */}
+                                            {/*  */}
+                                          </div>
+                                        )}
+                                        {client.sub_project.map(
+                                          (deal, index) => (
+                                            <React.Fragment key={index}>
+                                              {index <= 2 ? (
+                                                <>
+                                                  <div
+                                                    key={deal.id}
+                                                    className="pr-2  reviewcard"
+                                                  >
+                                                    <div>
+                                                      {deal.documents.map(
+                                                        (doc, index) => {
+                                                          return (
+                                                            <div key={doc.id}>
+                                                              <Droppable
+                                                                key={client.id}
+                                                                types={['file']}
+                                                                onDrop={(
+                                                                  file
+                                                                ) =>
+                                                                  onDrop1(
+                                                                    file,
+                                                                    deal,
+                                                                    client
+                                                                  )
+                                                                }
+                                                              >
+                                                                <>
+                                                                  <div
+                                                                    style={{
+                                                                      marginTop:
+                                                                        '8px',
+                                                                    }}
+                                                                  >
+                                                                    {' '}
+                                                                    <FilePreview
+                                                                      file={doc}
+                                                                      is_draggable={
+                                                                        true
+                                                                      }
+                                                                      keys={
+                                                                        index
+                                                                      }
+                                                                    />{' '}
+                                                                  </div>
+
+                                                                  <div
+                                                                    style={{
+                                                                      marginTop:
+                                                                        '8px',
+                                                                      display:
+                                                                        'inline',
+                                                                    }}
+                                                                  >
+                                                                    {' '}
+                                                                    <FilePreview
+                                                                      file={doc}
+                                                                      is_draggable={
+                                                                        true
+                                                                      }
+                                                                      keys={
+                                                                        index
+                                                                      }
+                                                                    />{' '}
+                                                                  </div>
+                                                                </>
+                                                              </Droppable>
+                                                            </div>
+                                                          );
+                                                        }
+                                                      )}
+
+                                                      <p
+                                                        className="text-center"
+                                                        style={{
+                                                          fontWeight: 649,
+                                                        }}
+                                                      >
+                                                        {deal.sub_project_name}
+
+                                                        {deal.documents.length >
+                                                          2 && (
+                                                          <>
+                                                            <span
+                                                              className="text-primary"
+                                                              style={{
+                                                                cursor:
+                                                                  'pointer',
+                                                                fontWeight:
+                                                                  'bold',
+                                                                marginLeft:
+                                                                  '10px',
+                                                              }}
+                                                              onClick={() =>
+                                                                navigate.push(
+                                                                  `/deals/${deal.id}`,
+                                                                  {
+                                                                    client:
+                                                                      client,
+                                                                  }
+                                                                )
+                                                              }
+                                                            >
+                                                              (Show More)
+                                                            </span>
+                                                          </>
+                                                        )}
+                                                        <br />
+
+                                                        <SiMicrosoftexcel
+                                                          size={23}
+                                                          item="folder"
+                                                          style={{
+                                                            cursor: 'pointer',
+                                                            marginLeft: '5px',
+                                                          }}
+                                                          onClick={() => {
+                                                            setModelStatus(
+                                                              true,
+                                                              deal.id,
+                                                              deal.sub_project_name
+                                                            );
+                                                          }}
+                                                        />
+                                                      </p>
+                                                    </div>{' '}
+                                                  </div>
+                                                </>
+                                              ) : (
+                                                <></>
+                                              )}
+                                            </React.Fragment>
+                                          )
+                                        )}
+                                      </div>
+                                    </BsFillGrid3X3GapFill>
+                                  </BsFillGrid3X3GapFill>
+                                </div>
+                              </Droppable>
+                            ) : (
+                              <Droppable
+                                key={client.id}
+                                types={['file']}
+                                onDrop={(file) => onDrop(file, client)}
+                              >
+                                <div
+                                  key={client.id}
+                                  className="bz-card relative"
+                                  style={{
+                                    minHeight: '1rem',
+                                    height: '250px',
+                                    marginBottom: '30px',
+                                    marginTop: '23px',
+                                    width: '100%',
+                                    borderRadius: '12px',
+                                  }}
+                                >
+                                  <div className="d-flex flex-row justify-content-between flex-row">
+                                    <div className="d-flex align-items-center">
+                                      <h4
+                                        style={{
+                                          fontWeight: 'bold',
+                                          margin: '10px',
+                                          fontSize: 23,
+                                          cursor: 'pointer',
+                                          textTransform: 'capitalize',
+                                        }}
+                                        onClick={() =>
+                                          navigate.push(
+                                            `/alldeals/${client.id}`
+                                          )
+                                        }
+                                      >
+                                        {documentByDate === 'document-date'
+                                          ? moment(client.date_created).format(
+                                              'DD/MM/YYYY'
+                                            )
+                                          : client.project_name &&
+                                            documentByDate === 'document-type'
+                                          ? client.doc_type
+                                          : client.project_name}
+
+                                        {client['document_length'] ? (
+                                          <span className="ml-1">
+                                            {client.document_length == 0
+                                              ? `(File :${client.document_length})`
+                                              : `(File: ${client.document_length})`}
+                                          </span>
+                                        ) : (
+                                          ''
+                                        )}
+                                        {/* {client.project_name} */}
+                                      </h4>
+                                      {documentByDate === 'document-date' ? (
+                                        ''
+                                      ) : (
+                                          <AiOutlineEdit
+                                            className="ml-2 cursor-pointer"
+                                            size={'25px'}
+                                            role="button"
+                                            onClick={(e) =>
+                                              editClientName(
+                                                client.id,
+                                                client.project_name
+                                              )
+                                            }
+                                          />
+                                        ) &&
+                                        documentByDate === 'document-type' ? (
+                                        ''
+                                      ) : (
+                                        <AiOutlineEdit
+                                          className="ml-2 cursor-pointer"
+                                          size={'25px'}
+                                          role="button"
+                                          onClick={(e) =>
+                                            editClientName(
+                                              client.id,
+                                              client.project_name
+                                            )
+                                          }
+                                        />
+                                      )}
+                                      {/* <AiOutlineEdit
+                    className="ml-2 cursor-pointer"
+                    size={'25px'}
+                    role='button'
+                    onClick={e=>editClientName(client.id,client.project_name)}
+                   /> */}
+                                    </div>
+                                    <div
+                                      className="align-items-center"
+                                      style={{
+                                        display: 'flex',
+                                        flexDirection: 'row',
+                                      }}
+                                    >
+                                      <div
+                                        onClick={() => {
+                                          subProjectToggle(
+                                            client.project_name,
+                                            client.id
+                                          );
+                                        }}
+                                        className="uploadButton"
+                                      >
+                                        {/* <OverlayTrigger
+                                          placement="top"
+                                          overlay={
+                                            <Tooltip>Add Orders</Tooltip>
+                                          }
+                                        >
+                                          <AiOutlineFolderAdd className="fs30" />
+                                        </OverlayTrigger> */}
+                                      </div>
+                                      <div className="uploadButton">
+                                        {/* <OverlayTrigger
+                                          placement={'top'}
+                                          overlay={<Tooltip>Upload</Tooltip>}
+                                          type="file"
+                                          onChange={handleOnFileUpload}
+                                        >
+                                          <BsUpload />
+                                        </OverlayTrigger> */}
+                                      </div>
+                                      {/* </Link> */}
+                                      {/*  */}
+                                      {/* <OverlayTrigger
+                                        placement={'top'}
+                                        overlay={<Tooltip>Catalog</Tooltip>}
+                                      >
+                                        <img
+                                          src={logo}
+                                          style={{ cursor: 'pointer' }}
+                                          onClick={() =>
+                                            navigate.push(
+                                              `/productlist/${client.id}`,
+                                              {
+                                                client,
+                                              }
+                                            )
+                                          }
+                                          item="folder"
+                                          id={client.id}
+                                          width="21px"
+                                        ></img>
+                                      </OverlayTrigger> */}
+
+                                      {/* <Share
+                                        size={23}
+                                        item="folder"
+                                        id={client.id}
+                                      /> */}
+                                    </div>
+                                  </div>
+
+                                  <BsFillGrid3X3GapFill container>
+                                    <BsFillGrid3X3GapFill item xs={12}>
+                                      <div className="d-flex justify-content-between">
+                                        {client.sub_project.length === 0 && (
+                                          <div>
+                                            {/*  */}
+                                            {/* <Link to="DragAndDrop"> */}
+                                            <div className="uploadButton">
+                                              <OverlayTrigger
+                                                placement={'top'}
+                                                overlay={
+                                                  <Tooltip>Upload</Tooltip>
+                                                }
+                                              >
+                                                <BsUpload />
+                                              </OverlayTrigger>
+                                            </div>
+                                            {/* </Link> */}
+                                            {/*  */}
+                                          </div>
+                                        )}
+                                        {client.sub_project.map(
+                                          (deal, index) => (
+                                            <React.Fragment key={index}>
+                                              {index <= 2 ? (
+                                                <>
+                                                  <div
+                                                    key={deal.id}
+                                                    className="pr-2  reviewcard"
+                                                  >
+                                                    <div>
+                                                      {deal.documents.map(
+                                                        (doc, index) => {
+                                                          return (
+                                                            <div key={doc.id}>
+                                                              <Droppable
+                                                                key={client.id}
+                                                                types={['file']}
+                                                                onDrop={(
+                                                                  file
+                                                                ) =>
+                                                                  onDrop1(
+                                                                    file,
+                                                                    deal,
+                                                                    client
+                                                                  )
+                                                                }
+                                                              >
+                                                                <>
+                                                                  <div
+                                                                    style={{
+                                                                      marginTop:
+                                                                        '8px',
+                                                                    }}
+                                                                  >
+                                                                    {/* {data.length &&
+                                                            data.map(
+                                                              (file, i) => {
+                                                                return ( */}
+                                                                    {/* <Draggable
+                                                            className='section-draggable'
+                                                            // key={i}
+                                                            type='file'
+                                                            // data={[
+                                                            //   [file.id],
+                                                            //   [file.file]
+                                                            // ]}
+                                                          > */}
+
+                                                                    <Draggable>
+                                                                      {' '}
+                                                                      <FilePreview
+                                                                        file={
+                                                                          doc
+                                                                        }
+                                                                        is_draggable={
+                                                                          true
+                                                                        }
+                                                                        keys={
+                                                                          index
+                                                                        }
+                                                                        // choosedFolder={
+                                                                        //   choosedFolder
+                                                                        // }
+                                                                      />
+                                                                    </Draggable>
+                                                                  </div>
+                                                                </>
+                                                              </Droppable>
+                                                            </div>
+                                                          );
+                                                        }
+                                                      )}
+
+                                                      <p
+                                                        className="text-center"
+                                                        style={{
+                                                          fontWeight: 649,
+                                                        }}
+                                                      >
+                                                        {deal.sub_project_name}
+
+                                                        {deal.documents.length >
+                                                          2 && (
+                                                          <>
+                                                            <span
+                                                              className="text-primary"
+                                                              style={{
+                                                                cursor:
+                                                                  'pointer',
+                                                                fontWeight:
+                                                                  'bold',
+                                                                marginLeft:
+                                                                  '10px',
+                                                              }}
+                                                              onClick={() =>
+                                                                navigate.push(
+                                                                  `/deals/${deal.id}`,
+                                                                  {
+                                                                    client:
+                                                                      client,
+                                                                  }
+                                                                )
+                                                              }
+                                                            >
+                                                              (Show More)
+                                                            </span>
+                                                          </>
+                                                        )}
+                                                        <br />
+
+                                                        <SiMicrosoftexcel
+                                                          size={23}
+                                                          item="folder"
+                                                          style={{
+                                                            cursor: 'pointer',
+                                                            marginLeft: '5px',
+                                                          }}
+                                                          onClick={() => {
+                                                            setModelStatus(
+                                                              true,
+                                                              deal.id,
+                                                              deal.sub_project_name
+                                                            );
+                                                          }}
+                                                        />
+                                                      </p>
+                                                    </div>
+                                                  </div>
+                                                </>
+                                              ) : (
+                                                <></>
+                                              )}
+                                              {index > 2 && (
+                                                <p
+                                                  onClick={() =>
+                                                    navigate.push(
+                                                      `/alldeals/${client.id}`
+                                                    )
+                                                  }
+                                                  className="allOrderstext"
+                                                >
+                                                  All Orders
+                                                </p>
+                                              )}
+                                            </React.Fragment>
+                                          )
+                                        )}
+                                      </div>
+                                    </BsFillGrid3X3GapFill>
+                                  </BsFillGrid3X3GapFill>
+                                </div>
+                              </Droppable>
+                            )}
+                          </React.Fragment>
+                        ))}
+                      </div>
+                      <div className="col-lg-4">
+                        {/* <div
+                  style={{
+                    minHeight: '1rem',
+                    height: 'auto',
+                    marginBottom: '30px',
+                    marginTop: '23px',
+                    width: '100%',
+                    borderRadius: '12px'
+                  }}
+                >
+                  <ReviewDisplay
+                    groupBy={groupBy}
+                    handleMostRecent={handleMostRecent}
+                  /> 
+                </div> */}
+                      </div>
+                    </div>
+
                     <div className="customer-docs d-flex flex-wrap align-items-start mt-4">
                       <div className="doc-box mb-3 me-3">
                         <div className="doc-title doc-blue ps-3">
@@ -831,18 +1531,18 @@ function Customer() {
                         </div>
                         <div className="doc-action d-flex justify-content-between">
                           <a className="doc-action-link py-2" href="">
-                            {/* {deal.sub_project_name}
+                            {/* {deal.sub_project_name} */}
 
-                            {deal.documents.length > 2 && ( */}
-                              <img
-                                src={eye}
-                                alt=""
-                                // onClick={() =>
-                                //   navigate.push(`/deals/${deal.id}`, {
-                                //     client: client,
-                                //   })
-                                // }
-                              />
+                            {/* {deal.documents.length > 2 && ( */}
+                            <img
+                              src={eye}
+                              // alt=""
+                              // onClick={() =>
+                              //   navigate.push(`/deals/${deal.id}`, {
+                              //     client: client,
+                              //   })
+                              // }
+                            />
                             {/* )} */}
                           </a>
                           <a className="doc-action-link py-2" href="">
@@ -994,10 +1694,70 @@ function Customer() {
                         </div>
                       </div>
                     </div>
-                    
                   </div>
                 </div>
               </div>
+              <ClientModal
+                show={showClientModal}
+                handleClose={handleClose}
+                fetchClients={fetchClients}
+              />
+
+              {/*  */}
+              {showEditClient && (
+                <ClientEditModel
+                  show={showEditClient}
+                  handleClose={handleCloseClient}
+                  editClientName={editClientNames}
+                  editClientId={editClientId}
+                  fetchClients={fetchClients}
+                />
+              )}
+              {/*  */}
+              {subProjectModal && (
+                <SubprojectModal
+                  toggle={subProjectToggle}
+                  modal={subProjectModal}
+                  clients={clients}
+                  subProjectListApi={subProjectListApi}
+                  fetchClients={fetchClients}
+                  clientName={clientName}
+                  editClientId={editClientId}
+                />
+              )}
+              {clientDropBool && (
+                <ClientDropModal
+                  modal={clientDropBool}
+                  toggle={clientDropToggle}
+                  onDropData={onDropData}
+                  addDropFolder={addDropFolder}
+                />
+              )}
+              {clientDropBool1 && (
+                <ClientDropModal1
+                  modal={clientDropBool1}
+                  toggle={clientDropToggle1}
+                  onDropData={onDropData1}
+                  addDropFolder={addDropFolder1}
+                />
+              )}
+              {clientDropBool2 && (
+                <ClientDropModal2
+                  modal={clientDropBool2}
+                  toggle={clientDropToggle2}
+                  onDropData={onDropData2}
+                  addDropFolder={addDropFolder2}
+                />
+              )}
+              {/* 
+      {batchDropBool && (
+        <BatchModal2
+          modal={clientDropBool2}
+          toggle={clientDropToggle2}
+          onDropData={onDropData2}
+          addDropFolder={addDropFolder2}
+        />
+      )} */}
 
               <div className="right-sidebar">
                 <div className="panel">
@@ -1100,7 +1860,6 @@ function Customer() {
                             </Col>
                           );
                         })}
-                        
                     </Row>
                   </Card.Body>
                 </div>
