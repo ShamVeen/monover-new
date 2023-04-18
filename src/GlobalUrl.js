@@ -5,6 +5,7 @@
 // const url = "http://13.127.127.40:80"; 
 // 29april
 
+// const url = 'http://34.93.209.224:8000'
 const url = 'http://34.93.209.224:8000'
 //  2 june 2022
 

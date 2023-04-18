@@ -8,9 +8,10 @@ import { url } from "../../GlobalUrl"
 import ScreenTop from "../mobileComp/ScreenTop"
 import Top from "../Top"
 import "./DatatableStyles.css"
-import MaterialTable from "material-table"
-import VisibilityIcon from '@material-ui/icons/Visibility';
-
+// import MaterialTable from "material-table"
+import Table from 'react-bootstrap/Table';
+// import VisibilityIcon from '@material-ui/icons/Visibility';
+import {AiFillEye} from 'react-icons/ai';
 
 
 function Excel(props) {
@@ -154,7 +155,7 @@ function Excel(props) {
     <div className="main" style={{ width: "100%" }}>
 
       <h1 style={{ marginTop: "20px", fontWeight: "500", fontSize: "32px" }}>{props.subfolder ? props.subfolder : 'Sub Projects'}</h1>
-      <MaterialTable
+      <Table
         style = {{ margin: "auto" ,height:'100%',width:'100%'}}
         key = { JSON.stringify(columns) + JSON.stringify(data) }
         isLoading = {loading}
@@ -180,7 +181,7 @@ function Excel(props) {
         }}
         actions={[
           {
-            icon: () => <VisibilityIcon />,
+            icon: () => <AiFillEye />,
             tooltip: 'View',
             onClick: (event, rowData) => {
               navigate.push(`/document-details/${rowData.id}`);
